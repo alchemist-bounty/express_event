@@ -3,13 +3,6 @@ var app=express();
 const path = require('path');
 const fs =require('fs');
 
-// let rawdata = fs.readFileSync(path.resolve(__dirname, 'student.json'));
-// const students = JSON.parse(rawdata);
-
-// console.log(students);
-
-// app.use('/', require('./routes/index'));
-// app.use('/users', require('./routes/users'));
 const OrderProcessor = require('./processor');
 
 const orderProcessor = new OrderProcessor();

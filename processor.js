@@ -1,9 +1,15 @@
 const EventEmitter = require('events');
 
 class OrderProcessor extends EventEmitter {
-    placeOrder(orders) {
+    placeOrder(orderData) {
         this.emit('PROCESSING_STARTED');
-        this.emit('PROCESSING_FAILED');
+        if (orderData.lineItems.length == 0) {
+            this.emit('PROCESSING_FAILED', {
+                orderNumber: orderData.orderNumber,
+                reason: 'LINEITEMS_EMPTY'
+            });
+        }
+        
         this.emit('PROCESSING_SUCCESS');
     }
 };
